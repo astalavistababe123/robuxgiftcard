@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Gift Card Generator</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        roblox: {
+                            bg: '#F2F4F5',
+                            card: '#FFFFFF',
+                            input: '#FFFFFF',
+                            inputDisabled: '#E3E3E3',
+                            border: '#BDBEBE',
+                            blue: '#00A2FF',
+                            blueHover: '#008CD9',
+                            green: '#00b06f',
+                            text: '#393B3D',
+                            subtext: '#656668'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes pulse-text {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-pulse-text {
+            animation: pulse-text 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes scale-in {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-scale-in {
+            animation: scale-in 0.4s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-roblox-bg text-roblox-text font-sans min-h-screen flex flex-col items-center justify-center p-4 selection:bg-roblox-blue selection:text-white">
+
+    <!-- Главный контейнер -->
+    <div class="bg-roblox-card w-full max-w-md rounded-lg shadow-xl border border-gray-200 p-8 relative overflow-hidden min-h-[450px] flex flex-col">
+
+        <!-- ================= ШАГ 1: ГЕНЕРАТОР ================= -->
+        <div id="step-generate" class="flex-1 flex flex-col">
+            <h1 class="text-2xl font-bold text-center mb-6">Gift Card Generator</h1>
+            
+            <!-- Реалистичная визуальная подарочная карта -->
+            <div class="w-full h-56 bg-[#111111] rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.25)] mb-6 relative overflow-hidden border border-gray-300">
+                
+                <!-- Вырез для крючка -->
+                <div class="absolute top-[-2px] left-1/2 transform -translate-x-1/2 w-16 h-5 bg-roblox-card rounded-b-[12px] z-30 border-b border-l border-r border-gray-300 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.05)]"></div>
+
+                <!-- Сетка "игр" на фоне -->
+                <div class="absolute inset-0 grid grid-cols-5 grid-rows-3 gap-1.5 p-1.5 opacity-60 z-0 transform scale-105">
+                    <div class="bg-gradient-to-br from-[#FF0055] to-[#5500FF] rounded-md"></div>
+                    <div class="bg-gradient-to-tr from-[#00FF88] to-[#0055FF] rounded-md"></div>
+                    <div class="bg-gradient-to-b from-[#FFAA00] to-[#FF0000] rounded-md"></div>
+                    <div class="bg-gradient-to-tl from-[#00AAFF] to-[#000055] rounded-md"></div>
+                    <div class="bg-gradient-to-br from-[#88FF00] to-[#008855] rounded-md"></div>
+                    
+                    <div class="bg-gradient-to-r from-[#AA00FF] to-[#FF00AA] rounded-md"></div>
+                    <div class="bg-gradient-to-bl from-[#005500] to-[#00FF00] rounded-md"></div>
+                    <div class="bg-gradient-to-br from-[#FF5500] to-[#AA0000] rounded-md"></div>
+                    <div class="bg-gradient-to-t from-[#0000FF] to-[#00AAFF] rounded-md"></div>
+                    <div class="bg-gradient-to-r from-[#FF0000] to-[#FF00AA] rounded-md"></div>
+                    
+                    <div class="bg-gradient-to-tl from-[#555555] to-[#AAAAAA] rounded-md"></div>
+                    <div class="bg-gradient-to-br from-[#FFCC00] to-[#FF5500] rounded-md"></div>
+                    <div class="bg-gradient-to-b from-[#0022AA] to-[#0088FF] rounded-md"></div>
+                    <div class="bg-gradient-to-tr from-[#FF00AA] to-[#5500FF] rounded-md"></div>
+                    <div class="bg-gradient-to-bl from-[#00FFCC] to-[#0055AA] rounded-md"></div>
+                </div>
+
+                <!-- Темное затенение для читаемости текста -->
+                <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 z-10"></div>
+
+                <!-- Контент карты -->
+                <div class="absolute inset-0 z-20 flex flex-col p-3 pb-2">
+                    
+                    <!-- Верхняя панель -->
+                    <div class="flex justify-between items-start w-full">
+                        <div class="text-[9px] text-white font-black tracking-widest leading-tight">
+                            INCLUDES<br>FREE<br>VIRTUAL ITEM
+                        </div>
+                        <div class="text-sm text-white font-bold tracking-wider pt-1">
+                            $10-$100
+                        </div>
+                    </div>
+
+                    <!-- Текст ROBLOX (SVG) -->
+                    <div class="w-full flex justify-center mt-1">
+                        <svg viewBox="0 0 260 40" class="w-48 h-auto fill-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                            <!-- R -->
+                            <path d="M 0 0 H 20 Q 35 0 35 15 Q 35 25 25 30 L 40 40 H 25 L 15 30 H 10 V 40 H 0 Z M 10 10 V 20 H 20 Q 25 20 25 15 Q 25 10 20 10 Z" />
+                            <!-- O -->
+                            <path d="M 45 0 H 80 V 40 H 45 Z M 55 10 V 30 H 70 V 10 Z" fill-rule="evenodd" />
+                            <!-- B -->
+                            <path d="M 85 0 H 105 Q 120 0 120 10 Q 120 18 110 20 Q 125 22 125 30 Q 125 40 105 40 H 85 Z M 95 10 V 15 H 105 Q 110 15 110 12.5 Q 110 10 105 10 Z M 95 25 V 30 H 105 Q 112 30 112 27.5 Q 112 25 105 25 Z" />
+                            <!-- L -->
+                            <path d="M 130 0 H 140 V 30 H 165 V 40 H 130 Z" />
+                            <!-- O -->
+                            <path d="M 170 0 H 205 V 40 H 170 Z M 180 10 V 30 H 195 V 10 Z" fill-rule="evenodd" />
+                            <!-- X -->
+                            <path d="M 210 0 H 222 L 230 15 L 238 0 H 250 L 237 20 L 250 40 H 238 L 230 25 L 222 40 H 210 L 223 20 Z" />
+                        </svg>
+                    </div>
+
+                    <!-- Центральный серебряный логотип -->
+                    <div class="flex-1 flex justify-center items-center relative">
+                        <svg viewBox="0 0 100 100" class="w-[88px] h-[88px] drop-shadow-[0_12px_20px_rgba(0,0,0,0.8)] transform rotate-[15deg]">
+                            <defs>
+                                <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffffff" />
+                                    <stop offset="30%" stop-color="#e2e4e6" />
+                                    <stop offset="70%" stop-color="#aeb1b5" />
+                                    <stop offset="100%" stop-color="#7a7d80" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Отрисовка квадрата с квадратной дыркой посередине -->
+                            <path d="M 0 0 L 100 0 L 100 100 L 0 100 Z M 35 35 L 35 65 L 65 65 L 65 35 Z" fill="url(#silver)" fill-rule="evenodd" />
+                        </svg>
+                    </div>
+
+                    <!-- Нижний текст -->
+                    <div class="w-full text-center mt-auto">
+                        <p class="text-white text-[13.5px] font-bold tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Play Millions of Games on Roblox</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Зона генерации -->
+            <div class="flex-1 flex flex-col justify-center">
+                <!-- Изначальная кнопка -->
+                <button id="btn-generate" class="w-full bg-roblox-blue hover:bg-roblox-blueHover text-white font-bold text-lg rounded-md py-3 transition-colors shadow-md active:scale-[0.98]">
+                    Generate Code
+                </button>
+
+                <!-- Результат (скрыт по умолчанию) -->
+                <div id="code-result" class="hidden flex flex-col items-center">
+                    <p class="text-roblox-subtext text-sm mb-2 font-semibold">Your Digital PIN:</p>
+                    
+                    <!-- Блок с кодом (кликабельный) -->
+                    <div id="code-box" class="w-full bg-gray-100 border-2 border-dashed border-gray-400 rounded-md py-3 px-4 text-center cursor-pointer hover:bg-gray-200 transition-colors relative mb-4 group">
+                        <span id="generated-pin" class="font-mono text-xl font-bold tracking-widest text-roblox-text"></span>
+                        <span id="copy-tooltip" class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded opacity-0 transition-opacity">Click to copy</span>
+                    </div>
+
+                    <!-- Кнопка продолжить -->
+                    <button id="btn-continue" class="w-full bg-roblox-text hover:bg-black text-white font-bold text-lg rounded-md py-3 transition-colors shadow-md active:scale-[0.98]">
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= ШАГ 2: АКТИВАЦИЯ ================= -->
+        <div id="step-redeem" class="hidden flex-1 flex flex-col">
+            <!-- Маленький темный логотип -->
+            <div class="flex justify-center mb-4">
+                <svg viewBox="0 0 100 100" class="w-16 h-16 drop-shadow-sm">
+                    <path d="M22,5 L95,22 L78,95 L5,78 Z" fill="#393b3d"/>
+                    <path d="M38,38 L62,43 L57,67 L33,62 Z" fill="#ffffff"/>
+                </svg>
+            </div>
+
+            <h1 class="text-2xl font-bold text-center mb-2">Redeem Roblox Code</h1>
+            <p class="text-roblox-subtext text-center text-sm mb-6">Enter your PIN to get Robux</p>
+
+            <div class="space-y-4 mb-auto">
+                <!-- Никнейм (Заблокирован и заполнен) -->
+                <div>
+                    <label class="block text-sm font-semibold mb-1 text-roblox-subtext">Detected Account</label>
+                    <input type="text" value="andrew_perforator1" readonly
+                        class="w-full bg-roblox-inputDisabled border border-roblox-border rounded-md px-4 py-3 text-roblox-text font-bold focus:outline-none cursor-not-allowed">
+                </div>
+
+                <!-- Ввод кода -->
+                <div>
+                    <label for="pin-input" class="block text-sm font-semibold mb-1 text-roblox-subtext">Gift Card PIN</label>
+                    <input type="text" id="pin-input" placeholder="Paste your code here" 
+                        class="w-full bg-roblox-input border border-roblox-border rounded-md px-4 py-3 text-roblox-text font-mono tracking-wider focus:outline-none focus:border-roblox-blue focus:ring-1 focus:ring-roblox-blue transition-all uppercase">
+                    <p id="error-msg" class="text-red-500 text-xs mt-1 hidden font-semibold">Please enter a valid code.</p>
+                </div>
+            </div>
+
+            <button id="btn-redeem" class="w-full bg-roblox-blue hover:bg-roblox-blueHover text-white font-bold text-lg rounded-md py-3 mt-6 transition-colors shadow-md active:scale-[0.98]">
+                Redeem Code
+            </button>
+        </div>
+
+        <!-- ================= ШАГ 3: ЗАГРУЗКА (Быстрый скан) ================= -->
+        <div id="step-loading" class="hidden flex-1 flex flex-col items-center justify-center">
+            <svg class="animate-spin h-12 w-12 text-roblox-blue mb-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <h2 class="text-xl font-bold mb-2 animate-pulse-text">Scanning code...</h2>
+            <p id="loading-text" class="text-roblox-subtext text-center text-sm">Validating PIN...</p>
+        </div>
+
+        <!-- ================= ШАГ 4: УСПЕХ ================= -->
+        <div id="step-success" class="hidden flex-1 flex flex-col items-center justify-center text-center">
+            <div class="w-20 h-20 bg-roblox-green rounded-full flex items-center justify-center mb-6 animate-scale-in shadow-[0_0_15px_rgba(0,176,111,0.4)]">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold mb-3 text-roblox-green">Successfully Redeemed!</h2>
+            <p class="text-roblox-text text-base">
+                <span id="final-amount" class="font-bold text-roblox-green text-xl">0</span> Robux have been added to <br>
+                <span class="font-bold text-roblox-text mt-1 block">andrew_perforator1</span>
+            </p>
+            <p class="text-roblox-subtext text-sm mt-4">Please refresh your game to see the updated balance.</p>
+            
+            <button onclick="location.reload()" class="w-full bg-transparent border-2 border-roblox-border hover:bg-gray-50 text-roblox-text font-bold rounded-md py-3 mt-8 transition-colors">
+                Generate Another
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Копирайт -->
+    <div class="mt-8 text-roblox-subtext text-xs text-center opacity-70">
+        <p>Not an official Roblox application. Created for demonstration purposes.</p>
+    </div>
+
+    <!-- Логика скрипта -->
+    <script>
+        // Элементы
+        const stepGen = document.getElementById('step-generate');
+        const stepRedeem = document.getElementById('step-redeem');
+        const stepLoad = document.getElementById('step-loading');
+        const stepSuccess = document.getElementById('step-success');
+
+        const btnGenerate = document.getElementById('btn-generate');
+        const codeResult = document.getElementById('code-result');
+        const generatedPinEl = document.getElementById('generated-pin');
+        const codeBox = document.getElementById('code-box');
+        const tooltip = document.getElementById('copy-tooltip');
+        const btnContinue = document.getElementById('btn-continue');
+
+        const pinInput = document.getElementById('pin-input');
+        const btnRedeem = document.getElementById('btn-redeem');
+        const errorMsg = document.getElementById('error-msg');
+        const loadingText = document.getElementById('loading-text');
+        const finalAmount = document.getElementById('final-amount');
+
+        let isGenerating = false; // Флаг блокировки действий во время генерации
+
+        // Функция генерации случайного кода (формат: XXXX-XXXX-XXXX)
+        function generateRandomCode() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = '';
+            for(let i=0; i<12; i++) {
+                if(i > 0 && i % 4 === 0) code += '-';
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+
+        // ШАГ 1: Генерация
+        btnGenerate.addEventListener('click', () => {
+            const finalCode = generateRandomCode();
+            isGenerating = true;
+            
+            // Прячем кнопку генерации, показываем блок с кодом
+            btnGenerate.classList.add('hidden');
+            codeResult.classList.remove('hidden');
+
+            // Блокируем кнопку Continue на время анимации
+            btnContinue.disabled = true;
+            btnContinue.classList.add('opacity-50', 'cursor-not-allowed');
+
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let iterations = 0;
+            const maxIterations = 40; // Длительность анимации
+
+            // Анимация подбора символов
+            const interval = setInterval(() => {
+                let displayStr = '';
+                for (let i = 0; i < finalCode.length; i++) {
+                    if (finalCode[i] === '-') {
+                        displayStr += '-';
+                        continue;
+                    }
+                    
+                    // Постепенно "фиксируем" правильные символы слева направо
+                    const lockThreshold = (i / finalCode.length) * maxIterations;
+                    if (iterations > lockThreshold) {
+                        displayStr += finalCode[i];
+                    } else {
+                        // Остальные символы постоянно меняются
+                        displayStr += chars.charAt(Math.floor(Math.random() * chars.length));
+                    }
+                }
+                generatedPinEl.innerText = displayStr;
+
+                iterations++;
+                if (iterations > maxIterations) {
+                    clearInterval(interval);
+                    generatedPinEl.innerText = finalCode; // Гарантированно ставим финальный код
+                    isGenerating = false;
+                    
+                    // Разблокируем кнопку Continue
+                    btnContinue.disabled = false;
+                    btnContinue.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }, 50); // Скорость смены (каждые 50мс)
+        });
+
+        // ШАГ 1: Копирование по клику
+        codeBox.addEventListener('click', () => {
+            if (isGenerating) return; // Запрещаем копирование, пока идет анимация
+
+            const codeToCopy = generatedPinEl.innerText;
+            
+            const textArea = document.createElement("textarea");
+            textArea.value = codeToCopy;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                tooltip.innerText = "Copied!";
+                tooltip.classList.remove('opacity-0');
+                tooltip.classList.add('opacity-100', 'bg-green-600');
+                
+                setTimeout(() => {
+                    tooltip.classList.remove('opacity-100', 'bg-green-600');
+                    tooltip.classList.add('opacity-0');
+                    tooltip.innerText = "Click to copy";
+                }, 2000);
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        // ПЕРЕХОД: Генератор -> Активация
+        btnContinue.addEventListener('click', () => {
+            stepGen.classList.add('hidden');
+            stepRedeem.classList.remove('hidden');
+            pinInput.focus();
+        });
+
+        // ШАГ 2: Активация (Redeem)
+        btnRedeem.addEventListener('click', () => {
+            const code = pinInput.value.trim();
+
+            if (code.length < 5) {
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+            errorMsg.classList.add('hidden');
+
+            // Фиксированное количество робуксов (РОВНО 100,000)
+            const fixedRobux = 100000;
+            finalAmount.innerText = fixedRobux.toLocaleString('en-US'); // Выведет 100,000
+
+            // Переключаем на загрузку
+            stepRedeem.classList.add('hidden');
+            stepLoad.classList.remove('hidden');
+
+            setTimeout(() => {
+                loadingText.innerText = "Authenticating PIN...";
+            }, 600);
+
+            setTimeout(() => {
+                loadingText.innerText = "Adding Robux to andrew_perforator1...";
+            }, 1400);
+
+            setTimeout(() => {
+                stepLoad.classList.add('hidden');
+                stepSuccess.classList.remove('hidden');
+            }, 2200);
+        });
+    </script>
+</body>
+</html>
